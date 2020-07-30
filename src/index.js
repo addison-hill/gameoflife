@@ -205,31 +205,56 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    this.seed();
-    this.playButton();
+    // this.seed();
+    // this.playButton();
   }
 
   render() {
     return (
-      <div>
-        <h1>The Game of Life</h1>
-        <Buttons
-          playButton={this.playButton}
-          pauseButton={this.pauseButton}
-          slow={this.slow}
-          fast={this.fast}
-          clear={this.clear}
-          seed={this.seed}
-          gridSize={this.gridSize}
-        />
-        <Grid
-          gridFull={this.state.gridFull}
-          rows={this.rows}
-          cols={this.cols}
-          selectBox={this.selectBox}
-        />
-        <h2>Generations: {this.state.generation}</h2>
-      </div>
+      <>
+        <div className="background">
+          <h1 className="title">The Game of Life</h1>
+          <div className="rules-container">
+            <div className="rules-1">
+              <h3>Rules</h3>
+              <p>
+                Each live cell with one or no neighbors dies, as if by solitude.
+              </p>
+              <p>
+                Each live cell with four or more neighbors dies, as if by
+                overpopulation.
+              </p>
+              <p>Each live cell with two or three neighbors survives.</p>
+              <p>Each dead cell with three neighbors becomes populated.</p>
+            </div>
+            <div className="instructions">
+              <h3>Instructions</h3>
+              <p>Click on any cell to make it "alive"</p>
+              <p>Click play to see how your simulation plays out</p>
+              <p>
+                Change the speed, size of the grid, or seed your grid using
+                buttons
+              </p>
+            </div>
+          </div>
+          <Grid
+            gridFull={this.state.gridFull}
+            rows={this.rows}
+            cols={this.cols}
+            selectBox={this.selectBox}
+          />
+          <h2>Generations: {this.state.generation}</h2>
+          <Buttons
+            playButton={this.playButton}
+            pauseButton={this.pauseButton}
+            slow={this.slow}
+            fast={this.fast}
+            clear={this.clear}
+            seed={this.seed}
+            gridSize={this.gridSize}
+          />
+        </div>
+      </>
     );
   }
 }
